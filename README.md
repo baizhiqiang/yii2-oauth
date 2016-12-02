@@ -74,6 +74,9 @@ AuthChoiceAsset::register($this);
 
 ## 4.申请上述第三方的 APP ID 和 APP KEY
 （1）QQ互联：http://connect.qq.com/
+
 （2）新浪微博开放平台：http://open.weibo.com/
+
 （3）Github Developer applications：https://github.com/settings/developers
+
 （4）微信开放 平台：https://open.weixin.qq.com/
