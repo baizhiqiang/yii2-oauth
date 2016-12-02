@@ -24,31 +24,16 @@ composer require --prefer-dist lulubin/yii2-oauth "dev-master"
                 'clientId' => '***',
                 'clientSecret' => '***',
             ],
-            'renren' => [
-                'class' => 'lulubin\oauth\RenrenAuth',
-                'clientId' => '***',
-                'clientSecret' => '***',
-            ],
-            'douban' => [
-                'class' => 'lulubin\oauth\DoubanAuth',
-                'clientId' => '***',
-                'clientSecret' => '***',
-            ],
             'weixin-mp' => [
                 'class' => 'lulubin\oauth\WeixinMpAuth',
                 'clientId' => '***',
                 'clientSecret' => '***',
             ],
-            'amazon' => [
-                'class' => 'lulubin\oauth\AmazonAuth',
-                'clientId' => '***',
-                'clientSecret' => '***',
-            ],
             'github' => [
-                    'class' => 'yii\authclient\clients\GitHub',
-                    'clientId' => '***',
-                    'clientSecret' => '***,
-                ],
+                'class' => 'yii\authclient\clients\GitHub',
+                'clientId' => '***',
+                'clientSecret' => '***,
+            ],
         ]
     ]
 ]
@@ -81,11 +66,15 @@ class SiteController extends Controller
 
 ### View
 ```
-<?= yii\authclient\widgets\AuthChoice::widget([
-    'baseAuthUrl' => ['site/auth'],
-    'popupMode' => false,
-])
-?>
+use lulubin\oauth\assets\AuthChoiceAsset;
+AuthChoiceAsset::register($this);
+<div class="form-group other-way">
+	<?=Html::a('',['/site/auth','authclient'=>'qq'],['class'=>'qq'])?>
+	<?=Html::a('',['/site/auth','authclient'=>'weibo'],['class'=>'weibo'])?>
+	<?=Html::a('',['/site/auth','authclient'=>'github'],['class'=>'github'])?>
+	<?=Html::a('',['/site/auth','authclient'=>'baidu'],['class'=>'baidu'])?>
+	<?=Html::a('',['/site/auth','authclient'=>'alipay'],['class'=>'alipay'])?>
+</div>
 ```
 
 ### WeixinMp
