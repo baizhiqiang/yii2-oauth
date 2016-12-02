@@ -12,7 +12,7 @@ use yii\web\HttpException;
  * Weixin OAuth
  * @see https://open.weixin.qq.com/cgi-bin/showdocument?action=doc&id=open1419316505&t=0.1933593254077447
  */
-class WeixinAuth extends OAuth2
+class Weixin extends OAuth2
 {
 
     public $authUrl = 'https://open.weixin.qq.com/connect/qrconnect';

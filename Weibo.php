@@ -7,7 +7,7 @@ use yii\authclient\OAuth2;
 /**
  * Sina Weibo OAuth
  */
-class WeiboAuth extends OAuth2
+class Weibo extends OAuth2
 {
 
     public $authUrl = 'https://api.weibo.com/oauth2/authorize';

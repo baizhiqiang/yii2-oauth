@@ -14,18 +14,13 @@ composer require --prefer-dist lulubin/yii2-oauth "dev-master"
                 'clientId' => '***',
                 'clientSecret' => '***',
             ],
-            'weibo' => [
-                'class' => 'lulubin\oauth\WeiboAuth',
-                'clientId' => '***',
-                'clientSecret' => '***',
-            ],
             'weixin' => [
                 'class' => 'lulubin\oauth\WeixinAuth',
                 'clientId' => '***',
                 'clientSecret' => '***',
             ],
-            'weixin-mp' => [
-                'class' => 'lulubin\oauth\WeixinMpAuth',
+            'weibo' => [
+                'class' => 'lulubin\oauth\WeiboAuth',
                 'clientId' => '***',
                 'clientSecret' => '***',
             ],
@@ -72,37 +67,7 @@ AuthChoiceAsset::register($this);
 <div class="form-group other-way">
 	<?=Html::a('',['/site/auth','authclient'=>'qq'],['class'=>'qq'])?>
 	<?=Html::a('',['/site/auth','authclient'=>'weibo'],['class'=>'weibo'])?>
+	<?=Html::a('',['/site/auth','authclient'=>'wechat'],['class'=>'wechat'])?>
 	<?=Html::a('',['/site/auth','authclient'=>'github'],['class'=>'github'])?>
-	<?=Html::a('',['/site/auth','authclient'=>'baidu'],['class'=>'baidu'])?>
-	<?=Html::a('',['/site/auth','authclient'=>'alipay'],['class'=>'alipay'])?>
 </div>
-```
-
-### WeixinMp
-```
-$weixinMp = Yii::$app->authClientCollection->getClient('weixin-mp');
-
-// http://mp.weixin.qq.com/wiki/11/0e4b294685f817b95cbed85ba5e82b8f.html
-// getAccessToken
-$accessTokenResult = $weixinMp->getMpAccessToken();
-if ($accessTokenResult->validate()) {
-    $accessTokenResult->access_token;
-    $accessTokenResult->expires_in;
-    $accessTokenResult->getAccessToken(); // WeixinMpToken
-} else {
-    var_dump($accessTokenResult->getErrCodeText());
-    var_dump($accessTokenResult->getErrors());
-}
-
-// http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html#.E8.8E.B7.E5.8F.96api_ticket
-// getTicket
-$accessTokenResult = $weixinMp->getMpAccessToken();
-$ticketType = 'jsapi'; // wx_card
-$ticketResult = $weixinMp->getTicket($accessTokenResult->access_token, $ticketType);
-if ($ticketResult->validate()) {
-    $accessTokenResult->ticket; // TicketString
-} else {
-    var_dump($ticketResult->getErrCodeText());
-    var_dump($ticketResult->getErrors());
-}
 ```

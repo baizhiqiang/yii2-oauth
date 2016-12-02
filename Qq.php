@@ -6,7 +6,7 @@ use yii\authclient\OAuth2;
 use yii\httpclient\Request;
 use yii\httpclient\Response;
 
-class QqAuth extends OAuth2
+class Qq extends OAuth2
 {
 
     public $authUrl = 'https://graph.qq.com/oauth2.0/authorize';
