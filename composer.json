@@ -14,7 +14,7 @@
     ],
     "require": {
         "yiisoft/yii2": "~2.0.0",
-        "yiisoft/yii2-authclient": "*"
+        "yiisoft/yii2-authclient": "~2.1.0"
     },
     "minimum-stability": "dev",
     "autoload": {
