@@ -66,6 +66,7 @@ class SiteController extends Controller
 
 ### View
 ```
+use yii\helpers\Html;
 use lulubin\oauth\assets\AuthChoiceAsset;
 AuthChoiceAsset::register($this);
 <div class="form-group other-way">
