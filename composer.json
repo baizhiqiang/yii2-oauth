@@ -1,20 +1,25 @@
 {
     "name": "lulubin/yii2-oauth",
     "description": "An yii2 extension for oauth",
-    "license": "BSD-3-Clause",
+    "keywords": ["yii2", "extension", "oauth"],
+    "homepage": "https://github.com/lulubin/yii2-oauth",
+    "type": "yii2-extension",
+    "license": "BSD 3-Clause",
     "authors": [
         {
-            "name": "xjflyttp",
-            "email": "xjflyttp@gmail.com"
+            "name": "lulubin",
+            "email": "452936616@qq.com",
+            "homepage": "https://luluqi.cn/"
         }
     ],
     "require": {
         "yiisoft/yii2": "~2.0.0",
-        "yiisoft/yii2-authclient": "~2.1.0"
+        "yiisoft/yii2-authclient": "*"
     },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "xj\\oauth\\": ""
+            "lulubin\\oauth\\": ""
         }
     }
 }
