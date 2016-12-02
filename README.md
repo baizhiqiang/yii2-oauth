@@ -80,3 +80,7 @@ AuthChoiceAsset::register($this);
 （3）新浪微博开放平台：http://open.weibo.com/
 
 （4）Github Developer applications：https://github.com/settings/developers
+
+QQ和微博的申请比较麻烦，时间久网站 需要备案；
+
+Github的申请则十分迅速，建议先申请这个测试。
