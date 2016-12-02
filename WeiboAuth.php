@@ -2,12 +2,12 @@
 
 namespace lulubin\oauth;
 
-use lulubin\authclient\OAuth2;
+use yii\authclient\OAuth2;
 
 /**
  * Sina Weibo OAuth
  */
-class WeiboAuth extends OAuth2 implements IAuth
+class WeiboAuth extends OAuth2
 {
 
     public $authUrl = 'https://api.weibo.com/oauth2/authorize';
@@ -22,26 +22,8 @@ class WeiboAuth extends OAuth2 implements IAuth
      */
     protected function initUserAttributes()
     {
-        return $this->api('oauth2/get_token_info', 'POST');
-    }
-
-    /**
-     * get UserInfo
-     * @return []
-     * @see http://open.weibo.com/wiki/2/users/show
-     */
-    public function getUserInfo()
-    {
-        return $this->api("2/users/show.json", 'GET', ['uid' => $this->getOpenid()]);
-    }
-
-    /**
-     * @return int
-     */
-    public function getOpenid()
-    {
-        $attributes = $this->getUserAttributes();
-        return $attributes['uid'];
+        $openid = $this->api('oauth2/get_token_info', 'POST');
+        return $this->api("2/users/show.json", 'GET', ['uid' => $openid['uid']]);
     }
 
     protected function defaultName()

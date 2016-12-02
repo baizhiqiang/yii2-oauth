@@ -8,7 +8,7 @@ use yii\base\Exception;
 /**
  * Douban OAuth
  */
-class DoubanAuth extends OAuth2 implements IAuth
+class DoubanAuth extends OAuth2
 {
 
     /**
@@ -34,24 +34,6 @@ class DoubanAuth extends OAuth2 implements IAuth
     protected function initUserAttributes()
     {
         return $this->api('v2/user/~me', 'GET');
-    }
-
-    /**
-     * @return array
-     * @see http://developers.douban.com/wiki/?title=user_v2#User
-     */
-    public function getUserInfo()
-    {
-        return $this->getUserAttributes();
-    }
-
-    /**
-     * @return string
-     */
-    public function getOpenid()
-    {
-        $attributes = $this->getUserAttributes();
-        return $attributes['id'];
     }
 
     protected function defaultName()

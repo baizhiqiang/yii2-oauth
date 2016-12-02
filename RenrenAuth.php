@@ -8,7 +8,7 @@ use yii\authclient\OAuth2;
  * Renren OAuth
  * @see http://wiki.dev.renren.com/wiki/Authentication
  */
-class RenrenAuth extends OAuth2 implements IAuth
+class RenrenAuth extends OAuth2
 {
 
     /**
@@ -35,26 +35,6 @@ class RenrenAuth extends OAuth2 implements IAuth
     protected function initUserAttributes()
     {
         return $this->getAccessToken()->getParams()['user'];
-    }
-
-    /**
-     * Get authed user info
-     *
-     * @see http://wiki.dev.renren.com/wiki/V2/user/get
-     * @return array
-     */
-    public function getUserInfo()
-    {
-        return $this->api("v2/user/get", 'GET', ['userId' => $this->getOpenid()]);
-    }
-
-    /**
-     * @return int
-     */
-    public function getOpenid()
-    {
-        $attributes = $this->getUserAttributes();
-        return $attributes['id'];
     }
 
     /**

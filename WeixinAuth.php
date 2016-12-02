@@ -12,7 +12,7 @@ use yii\web\HttpException;
  * Weixin OAuth
  * @see https://open.weixin.qq.com/cgi-bin/showdocument?action=doc&id=open1419316505&t=0.1933593254077447
  */
-class WeixinAuth extends OAuth2 implements IAuth
+class WeixinAuth extends OAuth2
 {
 
     public $authUrl = 'https://open.weixin.qq.com/connect/qrconnect';
@@ -109,23 +109,6 @@ class WeixinAuth extends OAuth2 implements IAuth
     protected function initUserAttributes()
     {
         return $this->api('sns/userinfo');
-    }
-
-    /**
-     * get UserInfo
-     * @return array
-     */
-    public function getUserInfo()
-    {
-        return $this->getUserAttributes();
-    }
-
-    /**
-     * @return string
-     */
-    public function getOpenid()
-    {
-        return $this->getAccessToken()->getParam('openid');
     }
 
     protected function defaultName()

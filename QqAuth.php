@@ -6,7 +6,7 @@ use yii\authclient\OAuth2;
 use yii\httpclient\Request;
 use yii\httpclient\Response;
 
-class QqAuth extends OAuth2 implements IAuth
+class QqAuth extends OAuth2
 {
 
     public $authUrl = 'https://graph.qq.com/oauth2.0/authorize';
@@ -25,29 +25,12 @@ class QqAuth extends OAuth2 implements IAuth
 
     protected function initUserAttributes()
     {
-        return $this->api('oauth2.0/me', 'GET');
-    }
-
-    /**
-     *
-     * @return []
-     * @see http://wiki.connect.qq.com/get_user_info
-     */
-    public function getUserInfo()
-    {
-        return $this->api("user/get_user_info", 'GET', [
-            'oauth_consumer_key' => $this->clientId,
-            'openid' => $this->getOpenid(),
-        ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function getOpenid()
-    {
-        $attributes = $this->getUserAttributes();
-        return $attributes['openid'];
+        $openid =  $this->api('oauth2.0/me', 'GET');
+        $qquser = $this->api("user/get_user_info", 'GET', ['oauth_consumer_key'=>$openid['client_id'], 'openid'=>$openid['openid']]);
+        $qquser['openid']=$openid['openid'];
+        $qquser['id']=$qquser['openid'];
+        $qquser['username']=$qquser['nickname'];
+        return $qquser;
     }
 
     protected function defaultName()

@@ -18,7 +18,7 @@ use yii\web\HttpException;
  * Weixin 开放平台
  * @see http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html
  */
-class WeixinMpAuth extends OAuth2 implements IAuth
+class WeixinMpAuth extends OAuth2
 {
 
     public $authUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize';
@@ -119,27 +119,6 @@ class WeixinMpAuth extends OAuth2 implements IAuth
             'openid' => isset($tokenParams['openid']) ? $tokenParams['openid'] : '',
             'unionid' => isset($tokenParams['unionid']) ? $tokenParams['unionid'] : '',
         ];
-    }
-
-    /**
-     * You must have grant scope=snsapi_userinfo
-     * @return []
-     * @see https://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html
-     */
-    public function getUserInfo()
-    {
-        return $this->api('sns/userinfo', 'GET', [
-            'openid' => $this->getOpenid()
-        ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function getOpenid()
-    {
-        $attributes = $this->getUserAttributes();
-        return $attributes['openid'];
     }
 
     protected function defaultName()

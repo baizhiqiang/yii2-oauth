@@ -4,14 +4,13 @@ namespace lulubin\oauth;
 
 use yii\authclient\OAuth2;
 use yii\authclient\OAuthToken;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\web\HttpException;
 
 /**
  * @see https://images-na.ssl-images-amazon.com/images/G/01/lwa/dev/docs/website-developer-guide._TTH_.pdf
  */
-class AmazonAuth extends OAuth2 implements IAuth
+class AmazonAuth extends OAuth2
 {
 
     public $authUrl = 'https://www.amazon.com/ap/oa';
@@ -103,24 +102,6 @@ class AmazonAuth extends OAuth2 implements IAuth
     protected function initUserAttributes()
     {
         return $this->api('/auth/O2/tokeninfo');
-    }
-
-    /**
-     * get UserInfo
-     * @return array
-     */
-    public function getUserInfo()
-    {
-        return $this->api("/user/profile");
-    }
-
-    /**
-     * @return string
-     */
-    public function getOpenid()
-    {
-        $attributes = $this->getUserAttributes();
-        return ArrayHelper::getValue($attributes, 'user_id');
     }
 
     protected function defaultName()

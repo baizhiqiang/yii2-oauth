@@ -44,6 +44,11 @@ composer require --prefer-dist lulubin/yii2-oauth "dev-master"
                 'clientId' => '***',
                 'clientSecret' => '***',
             ],
+            'github' => [
+                    'class' => 'yii\authclient\clients\GitHub',
+                    'clientId' => '***',
+                    'clientSecret' => '***,
+                ],
         ]
     ]
 ]
@@ -68,10 +73,8 @@ class SiteController extends Controller
     public function successCallback($client)
     {
         $id = $client->getId();
-        $attributes = $client->getUserAttributes(); // basic info
-        $openid = $client->getOpenid(); //user openid
-        $userInfo = $client->getUserInfo(); // user extend info
-        var_dump($id, $attributes, $openid, $userInfo);
+        $attributes = $client->getUserAttributes();
+        var_dump($id, $attributes);
     }
 }
 ```
