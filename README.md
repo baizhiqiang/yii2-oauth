@@ -1,10 +1,8 @@
 ## 1.Install
-```
 composer require --prefer-dist lulubin/yii2-oauth "dev-master"
-```
 
 ## 2.Config
-```
+```php
 'components' => [
     'authClientCollection' => [
         'class' => 'yii\authclient\Collection',
@@ -37,7 +35,7 @@ composer require --prefer-dist lulubin/yii2-oauth "dev-master"
 ## 3.Usage
 
 ### Controller
-```
+```php
 class SiteController extends Controller
 {
     public function actions()
@@ -61,9 +59,11 @@ class SiteController extends Controller
 
 ### View
 ```
+<?php
 use yii\helpers\Html;
 use lulubin\oauth\assets\AuthChoiceAsset;
 AuthChoiceAsset::register($this);
+?>
 <div class="form-group other-way">
 	<?=Html::a('',['/site/auth','authclient'=>'qq'],['class'=>'qq'])?>
 	<?=Html::a('',['/site/auth','authclient'=>'weibo'],['class'=>'weibo'])?>
