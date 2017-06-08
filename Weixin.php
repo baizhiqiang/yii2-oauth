@@ -108,7 +108,8 @@ class Weixin extends OAuth2
      */
     protected function initUserAttributes()
     {
-        return $this->api('sns/userinfo');
+        $attributes = $this->getAccessToken()->getParams();
+        return $this->api('sns/userinfo','GET',['openid' => $attributes['openid'],'access_token' => $attributes['access_token']]);
     }
 
     protected function defaultName()
